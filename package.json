@@ -4,17 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  
-    "install-clinet" : "npm install --prefix client", 
-    "install-server" : "npm install --prefix server",
-    "install" : "npm run install-client && npm run install-server",
+    "install-clinet": "npm install --prefix client",
+    "install-server": "npm install --prefix server",
+    "install": "npm run install-client && npm run install-server",
     "server": "npm run watch --prefix server",
     "client": "npm start --prefix client",
     "watch": "npm run client & npm run server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client-build": "npm run build --prefix client",
+    "deploy": "npm run build --prefix client && npm run server"
   },
   "keywords": [],
   "author": "Vinay Kulkarni",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "morgan": "^1.10.0"
+  }
 }
-
