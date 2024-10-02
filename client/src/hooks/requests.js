@@ -14,14 +14,29 @@ async function httpGetLaunches() {
   const response = await fetch(`${endPoint}/launches`);
   const fetchedLaunches = await response.json();
 
-  return fetchedLaunches.sort((a, b) => {
-    a.flightNumber - b.flightNumber;
-  });
+  // fetchedLaunches.sort((a, b) => {
+  //   a.flightNumber - b.flightNumber;
+  // });
+
+  return fetchedLaunches;
 }
 
 async function httpSubmitLaunch(launch) {
   // TODO: Once API is ready.
   // Submit given launch data to launch system.
+  try {
+    return await fetch(`${endPoint}/launches`, {
+      method: "post",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(launch),
+    });
+  } catch (err) {
+    return {
+      ok: false,
+    };
+  }
 }
 
 async function httpAbortLaunch(id) {
